@@ -19,9 +19,9 @@ text, tspan {white-space: pre;}
 <text x="10" y="30" fill="#c9d1d9" font-family="monospace" font-size="16">
 <tspan x="-20" y="60">                              </tspan>
 <tspan x="-20" y="80">      .       .       .       </tspan>
-<tspan x="-20" y="100">     .   .   .   .   .       </tspan>
-<tspan x="-20" y="120">    .    . . . . .    .      </tspan>
-<tspan x="-20" y="140">    .       . .       .      </tspan>
+<tspan x="-20" y="100">     . .   .   .   . .       </tspan>
+<tspan x="-20" y="120">    .    .       .    .      </tspan>
+<tspan x="-20" y="140">    .                 .      </tspan>
 <tspan x="-20" y="160">     . . . . . . . . .       </tspan>
   
 <tspan x="-20" y="260">        ...      ...         </tspan>
