@@ -16,7 +16,7 @@ size-adjust: 109%;
 text, tspan {white-space: pre;}
 </style>
 <rect width="auto" height="auto" fill="#161b22" rx="15"/>
-<text x="20" y="60" fill="#c9d1d9" font-family="monospace" font-size="20">
+<text x="0" y="0" fill="#c9d1d9" font-family="monospace" font-size="20">
 <tspan x="-40" y="0">                .       .       .       </tspan>
 <tspan x="-40" y="40">               . .   .   .   . .       </tspan>
 <tspan x="-40" y="80">             .    .       .    .      </tspan>
