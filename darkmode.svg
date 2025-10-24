@@ -17,11 +17,11 @@ text, tspan {white-space: pre;}
 </style>
 <rect width="auto" height="auto" fill="#161b22" rx="15"/>
 <text x="20" y="60" fill="#c9d1d9" font-family="monospace" font-size="16">
-<tspan x="-40" y="60">               .       .       .       </tspan>
-<tspan x="-40" y="100">              . .   .   .   . .       </tspan>
-<tspan x="-40" y="140">             .    .       .    .      </tspan>
-<tspan x="-40" y="180">             .                 .      </tspan>
-<tspan x="-40" y="220">              . . . . . . . . .       </tspan>
+<tspan x="-40" y="20">               .       .       .       </tspan>
+<tspan x="-40" y="60">               . .   .   .   . .       </tspan>
+<tspan x="-40" y="100">             .    .       .    .      </tspan>
+<tspan x="-40" y="140">             .                 .      </tspan>
+<tspan x="-40" y="180">              . . . . . . . . .       </tspan>
 <tspan x="-20" y="220">                                      </tspan>
 <tspan x="-20" y="240">                 ...      ...         </tspan>
 <tspan x="-20" y="260">                 ...     ...          </tspan>
