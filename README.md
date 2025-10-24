@@ -2,5 +2,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/lucifer0710/lucifer0710/main/dark_mode.svg">
   </picture>
-  
+  <div align="center">
+  <img src="https://profile-readme-generator.com/assets/snake.svg" alt="Snake animation" />
+</div>
 </a>
