@@ -1,7 +1,7 @@
 <a href="https://github.com/lucifer0710/lucifer0710">
-  <picture>
-    <source media="darkmode.svg">
-  </picture>
+ <p align="center">
+  <img src="darkmode.svg" alt="EduNotes Logo" width="200"/>
+</p>
   <div align="center">
   <img src="https://profile-readme-generator.com/assets/snake.svg" alt="Snake animation" />
 </div>
