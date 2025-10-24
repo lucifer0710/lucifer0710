@@ -15,7 +15,7 @@ size-adjust: 109%;
 .cc {fill: #616e7f;}
 text, tspan {white-space: pre;}
 </style>
-<rect width="900px" height="930px" fill="#161b22" rx="15"/>
+<rect width="auto" height="auto" fill="#161b22" rx="15"/>
 <text x="10" y="30" fill="#c9d1d9" font-family="monospace" font-size="16">
 <tspan x="-20" y="100">                             </tspan>
 <tspan x="-20" y="120">                             </tspan>
