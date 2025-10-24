@@ -17,8 +17,8 @@ text, tspan {white-space: pre;}
 </style>
 <rect width="985px" height="530px" fill="#161b22" rx="15"/>
 <text x="0" y="30" fill="#c9d1d9" font-family="monospace" font-size="20">
-<tspan x="-30" y="60">          .       .      .       </tspan>
-<tspan x="-30" y="90">          . .   .   .  . .       </tspan>
+<tspan x="-30" y="60">          .      .      .       </tspan>
+<tspan x="-30" y="90">          . .  .   .  . .       </tspan>
 <tspan x="-30" y="120">        .    .       .    .      </tspan>
 <tspan x="-30" y="150">        .                 .      </tspan>
 <tspan x="-30" y="180">         . . . . . . . . .       </tspan> 
