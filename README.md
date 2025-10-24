@@ -17,13 +17,15 @@ text, tspan {white-space: pre;}
 </style>
 <rect width="985px" height="530px" fill="#161b22" rx="15"/>
 <text x="10" y="30" fill="#c9d1d9" font-family="monospace" font-size="16">
-<tspan x="-20" y="60">                              </tspan>
-<tspan x="-20" y="80">      .       .       .       </tspan>
-<tspan x="-20" y="100">     . .   .   .   . .       </tspan>
-<tspan x="-20" y="120">    .    .       .    .      </tspan>
-<tspan x="-20" y="140">    .                 .      </tspan>
-<tspan x="-20" y="160">     . . . . . . . . .       </tspan>
-  
+<tspan x="-20" y="100">                             </tspan>
+<tspan x="-20" y="120">                             </tspan>
+<tspan x="-20" y="140">                             </tspan>
+<tspan x="-20" y="160">     .       .       .       </tspan>
+<tspan x="-20" y="180">     . .   .   .   . .       </tspan>
+<tspan x="-20" y="200">    .    .       .    .      </tspan>
+<tspan x="-20" y="220">    .                 .      </tspan>
+<tspan x="-20" y="240">     . . . . . . . . .       </tspan>
+
 <tspan x="-20" y="260">        ...      ...         </tspan>
 <tspan x="-20" y="280">        ...     ...          </tspan>
 <tspan x="-20" y="300">        ...   ...            </tspan>
@@ -31,6 +33,9 @@ text, tspan {white-space: pre;}
 <tspan x="-20" y="340">        ...   ...            </tspan>
 <tspan x="-20" y="360">        ...     ...          </tspan>
 <tspan x="-20" y="380">        ...      ...         </tspan>
+<tspan x="-20" y="400">                             </tspan>
+<tspan x="-20" y="420">                             </tspan>
+<tspan x="-20" y="440">                             </tspan>
 </text>
     <text x="390" y="30" fill="#c9d1d9">
 <tspan x="390" y="30">kunal@lucifer0710</tspan> -———————————————————————————————————————————-—-
