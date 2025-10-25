@@ -10,8 +10,8 @@ import hashlib
 # Account permissions: read:Followers, read:Starring, read:Watching
 # Repository permissions: read:Commit statuses, read:Contents, read:Issues, read:Metadata, read:Pull Requests
 # Issues and pull requests permissions not needed at the moment, but may be used in the future
-HEADERS = {'authorization': 'token ' + os.environ['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']}
-USER_NAME = os.environ['lucifer0710']
+HEADERS = {'authorization': 'token ' + os.environ['ACCESS_TOKEN']}
+USER_NAME = os.environ['USER_ID']
 QUERY_COUNT = {'user_getter': 0, 'follower_getter': 0, 'graph_repos_stars': 0, 'recursive_loc': 0, 'graph_commits': 0,
                'loc_query': 0}
 OWNER_ID = None  # Initialize as None
