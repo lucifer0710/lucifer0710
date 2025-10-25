@@ -398,16 +398,42 @@ if __name__ == '__main__':
         print(f"Archived Repos: {archive_repos}")
 
         # ✅ Corrected order of parameters
-        svg_overwrite(
-            'darkmode.svg',
-            age_data,
-            total_commits,   # Correct: total commit count
-            stars,
-            repos,
-            commits,         # contributions/today's commits
-            followers,
-            total_loc
-        )
+       import xml.etree.ElementTree as ET
+
+def update_svg(file_path, updates):
+    tree = ET.parse(file_path)
+    root = tree.getroot()
+
+    # Helper function to update tspan text by ID
+    def set_text_by_id(element_id, text):
+        elem = root.find(f".//*[@id='{element_id}']")
+        if elem is not None:
+            elem.text = str(text)
+        else:
+            print(f"⚠️ Warning: ID '{element_id}' not found in SVG")
+
+    # Apply updates from the dictionary
+    for key, value in updates.items():
+        set_text_by_id(key, value)
+
+    # Save back to same file
+    tree.write(file_path, encoding="utf-8", xml_declaration=True)
+    print("✅ darkmode.svg successfully updated with latest GitHub stats!")
+
+# --- Update the SVG file with your stats ---
+update_svg(
+    "darkmode.svg",
+    {
+        "age_data": age_data,
+        "commit_data": total_commits,
+        "follower_data": followers,
+        "repo_data": repos,
+        "star_data": stars,
+        "loc_data": total_loc,
+        "loc_add": "+",   # optional placeholder
+        "loc_del": "-"    # optional placeholder
+    }
+)
 
     except Exception as e:
         print("❌ Error:", e)
