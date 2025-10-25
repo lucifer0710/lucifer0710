@@ -22,11 +22,12 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install python-dotenv
-          - name: Create Cache Directory
-           run: mkdir -p cache
+  run: |
+    pip install -r requirements.txt
+    pip install python-dotenv
+
+  - name: Create cache directory
+         run: mkdir -p cache
 
       - name: Run script
         env:
