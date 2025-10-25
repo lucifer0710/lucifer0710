@@ -553,7 +553,7 @@ if __name__ == '__main__':
 
         # Update SVGs if present
         svg_overwrite(
-            'output.svg',
+            'darkmode.svg/output.svg',
             age_data,
             total_commits,
             stars,
