@@ -1,0 +1,46 @@
+# .github/workflows/update-stats.yml
+name: Update GitHub Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install python-dotenv
+
+      - name: Create cache directory
+        run: mkdir -p cache
+
+      - name: Run script
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          USER_NAME: ${{ secrets.USER_NAME }}
+        run: python today.py
+
+      - name: Commit and push changes
+  env:
+    ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  run: |
+    git config user.name "github-actions[bot]"
+    git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    git add darkmode.svg
+    git commit -m "Update GitHub stats" || echo "No changes"
+    git push https://x-access-token:${ACCESS_TOKEN}@github.com/lucifer0710/lucifer0710.git
