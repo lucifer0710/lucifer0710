@@ -398,6 +398,9 @@ if __name__ == '__main__':
         print(f"Net LOC: {total_loc[2]:,}")
         print(f"Archived Repos: {archive_repos}")
 
+    except Exception as e:
+        print(f"❌ Error during stats calculation: {e}")
+
 # ✅ Corrected order of parameters
 
 
