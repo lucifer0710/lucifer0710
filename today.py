@@ -392,7 +392,7 @@ if __name__ == "__main__":
         total_loc[1] += archive_del
         total_loc[2] += archive_net
 
-         print("\n📊 Final Totals:")
+        print("\n📊 Final Totals:")
         print(f"Age: {age_data}")
         print(f"Repos: {repos}")
         print(f"Stars: {stars}")
@@ -406,6 +406,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"❌ Error during stats calculation: {e}")
 # ✅ Corrected order of parameters
+
 
 def update_svg(file_path, updates):
     tree = ET.parse(file_path)
@@ -426,6 +427,7 @@ def update_svg(file_path, updates):
     # Save back to same file
     tree.write(file_path, encoding="utf-8", xml_declaration=True)
     print("✅ darkmode.svg successfully updated with latest GitHub stats!")
+
 
 # --- Update the SVG file with your stats ---
 update_svg(
