@@ -368,7 +368,12 @@ def formatter(query_type, difference, funct_return=False, whitespace=0):
     return funct_return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    # ✅ Define safe defaults
+    age_data = repos = stars = followers = total_commits = 0
+    total_loc = [0, 0, 0]
+    archive_repos = 0
+
     try:
         print('⏱ Calculation times:')
         user_id, acc_date = user_getter(USER_NAME)
@@ -400,7 +405,6 @@ if __name__ == '__main__':
 
     except Exception as e:
         print(f"❌ Error during stats calculation: {e}")
-
 # ✅ Corrected order of parameters
 
 
