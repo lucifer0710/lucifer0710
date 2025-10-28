@@ -370,8 +370,8 @@ def formatter(query_type, difference, funct_return=False, whitespace=0):
 
 if __name__ == "__main__":
     # ✅ Define safe defaults
-    age_data = repos = stars = followers = total_commits = 0
-    total_loc = [0, 0, 0]
+    total_loc = repos = stars = followers = total_commits = 0
+    age_data = [0, 0, 0]
     archive_repos = 0
 
     try:
