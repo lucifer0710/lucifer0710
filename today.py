@@ -392,22 +392,21 @@ if __name__ == "__main__":
         total_loc[1] += archive_del
         total_loc[2] += archive_net
 
-        print("\n📊 Final Totals:")
+                print("\n📊 Final Totals:")
+        added, deleted, net, *_ = total_loc  # Unpack cleanly
+
         print(f"Age: {age_data}")
         print(f"Repos: {repos}")
         print(f"Stars: {stars}")
         print(f"Followers: {followers}")
         print(f"Commits: {total_commits}")
-        print(f"LOC Added: {total_loc[0]:,}")
-        print(f"LOC Deleted: {total_loc[1]:,}")
-        print(f"Net LOC: {total_loc[2]:,}")
+        print(f"Lines of Code: {net:,} | +{added:,}, -{deleted:,}")
         print(f"Archived Repos: {archive_repos}")
 
     except Exception as e:
         print(f"❌ Error during stats calculation: {e}")
+
 # ✅ Corrected order of parameters
-
-
 def update_svg(file_path, updates):
     tree = ET.parse(file_path)
     root = tree.getroot()
@@ -428,8 +427,8 @@ def update_svg(file_path, updates):
     tree.write(file_path, encoding="utf-8", xml_declaration=True)
     print("✅ darkmode.svg successfully updated with latest GitHub stats!")
 
-
 # --- Update the SVG file with your stats ---
+added, deleted, net, *_ = total_loc
 update_svg(
     "darkmode.svg",
     {
@@ -438,8 +437,7 @@ update_svg(
         "follower_data": followers,
         "repo_data": repos,
         "star_data": stars,
-        "loc_data": total_loc,
-        "loc_add": "+",
-        "loc_del": "-",
+        # Now properly formatted
+        "loc_data": f"{net:,} | +{added:,}, -{deleted:,}",
     },
 )
