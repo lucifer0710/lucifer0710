@@ -438,8 +438,8 @@ update_svg(
         "follower_data": followers,
         "repo_data": repos,
         "star_data": stars,
-        "loc_data": total_loc,
-        "loc_add": "+",
-        "loc_del": "-",
+        "loc_data": f"{total_loc[2]}",
+        "loc_add": f"+{total_loc[0]}",
+        "loc_del": f"-{total_loc[1]}",
     },
 )
