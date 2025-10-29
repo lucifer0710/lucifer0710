@@ -33,7 +33,7 @@ jobs:
       - name: Create cache directory
         run: mkdir -p cache
 
-      # 🚀 Run the update script
+      # 🚀 Run the main update script
       - name: Run update script
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
@@ -41,6 +41,18 @@ jobs:
         run: |
           echo "Running today.py with USER_NAME=${{ secrets.USER_NAME }}"
           python today.py
+
+      # 🔄 Force cache refresh (valid YAML version)
+      - name: Force cache refresh
+        shell: python
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          USER_NAME: ${{ secrets.USER_NAME }}
+        run: |
+          from today import loc_query
+          print("Forcing cache refresh...")
+          loc_query(['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], force_cache=True)
+          print("✅ Cache refreshed successfully")
 
       # 💾 Commit and push changes
       - name: Commit and push changes
