@@ -411,8 +411,9 @@ if __name__ == "__main__":
 def update_svg(file_path, updates):
     tree = ET.parse(file_path)
     root = tree.getroot()
-  
-ET.register_namespace('', "http://www.w3.org/2000/svg")
+
+    # ✅ Fix: register SVG namespace to remove ns0 prefixes
+    ET.register_namespace('', "http://www.w3.org/2000/svg")
 
     # Helper function to update tspan text by ID
     def set_text_by_id(element_id, text):
@@ -426,7 +427,7 @@ ET.register_namespace('', "http://www.w3.org/2000/svg")
     for key, value in updates.items():
         set_text_by_id(key, value)
 
-    # Save back to same file
+    # ✅ Save back to same file (clean SVG, no ns0:)
     tree.write(file_path, encoding="utf-8", xml_declaration=True)
     print("✅ darkmode.svg successfully updated with latest GitHub stats!")
 
