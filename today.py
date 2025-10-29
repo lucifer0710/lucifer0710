@@ -411,6 +411,8 @@ if __name__ == "__main__":
 def update_svg(file_path, updates):
     tree = ET.parse(file_path)
     root = tree.getroot()
+  
+ET.register_namespace('', "http://www.w3.org/2000/svg")
 
     # Helper function to update tspan text by ID
     def set_text_by_id(element_id, text):
