@@ -33,7 +33,16 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           USER_NAME: ${{ secrets.USER_NAME }}
         run: python today.py
-
+        
+      - name: Force cache refresh (once)
+  env:
+    ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    USER_NAME: ${{ secrets.USER_NAME }}
+  run: python - <<'EOF'
+from today import loc_query
+loc_query(['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], force_cache=True)
+EOF
+     
       - name: Commit and push changes
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
