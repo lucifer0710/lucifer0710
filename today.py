@@ -402,7 +402,20 @@ if __name__ == "__main__":
         print(f"LOC Deleted: {total_loc[1]:,}")
         print(f"Net LOC: {total_loc[2]:,}")
         print(f"Archived Repos: {archive_repos}")
-
+# --- Update the SVG file with your stats ---
+update_svg(
+    "darkmode.svg",
+    {
+        "age_data": age_data,
+        "commit_data": total_commits,
+        "follower_data": followers,
+        "repo_data": repos,
+        "star_data": stars,
+        "loc_data": f"{total_loc[2]}",
+        "loc_add": f"+{total_loc[0]}",
+        "loc_del": f"-{total_loc[1]}",
+    },
+)
     except Exception as e:
         print(f"❌ Error during stats calculation: {e}")
 # ✅ Corrected order of parameters
@@ -432,17 +445,4 @@ def update_svg(file_path, updates):
     print("✅ darkmode.svg successfully updated with latest GitHub stats!")
 
 
-# --- Update the SVG file with your stats ---
-update_svg(
-    "darkmode.svg",
-    {
-        "age_data": age_data,
-        "commit_data": total_commits,
-        "follower_data": followers,
-        "repo_data": repos,
-        "star_data": stars,
-        "loc_data": f"{total_loc[2]}",
-        "loc_add": f"+{total_loc[0]}",
-        "loc_del": f"-{total_loc[1]}",
-    },
-)
+
