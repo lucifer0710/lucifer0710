@@ -58,12 +58,13 @@ def graph_commits(start_date, end_date):
         next_date = min(current + datetime.timedelta(days=365), end)
         variables = {'start_date': current.isoformat(), 'end_date': next_date.isoformat(), 'login': USER_NAME}
         request = simple_request(graph_commits.__name__, query, variables)
-        year_total = int(request.json()['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions'])
+        data = request.json()
+        print("🧩 Raw GitHub API response:", data)  # <--- ADD THIS LINE
+        year_total = int(data['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions'])
         total += year_total
         current = next_date
 
     return total
-
 def graph_repos_stars(count_type, owner_affiliation, cursor=None):
     query_count('graph_repos_stars')
     query = '''
