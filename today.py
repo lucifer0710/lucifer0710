@@ -39,6 +39,10 @@ def simple_request(func_name, query, variables):
 
 def graph_commits(start_date, end_date):
     query_count('graph_commits')
+    total = 0
+    current = datetime.datetime.fromisoformat(start_date)
+    end = datetime.datetime.fromisoformat(end_date)
+
     query = '''
     query($start_date: DateTime!, $end_date: DateTime!, $login: String!) {
         user(login: $login) {
@@ -49,10 +53,16 @@ def graph_commits(start_date, end_date):
             }
         }
     }'''
-    variables = {'start_date': start_date, 'end_date': end_date, 'login': USER_NAME}
-    request = simple_request(graph_commits.__name__, query, variables)
-    return int(request.json()['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions'])
 
+    while current < end:
+        next_date = min(current + datetime.timedelta(days=365), end)
+        variables = {'start_date': current.isoformat(), 'end_date': next_date.isoformat(), 'login': USER_NAME}
+        request = simple_request(graph_commits.__name__, query, variables)
+        year_total = int(request.json()['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions'])
+        total += year_total
+        current = next_date
+
+    return total
 
 def graph_repos_stars(count_type, owner_affiliation, cursor=None):
     query_count('graph_repos_stars')
