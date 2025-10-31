@@ -387,7 +387,7 @@ if __name__ == "__main__":
         commits, _ = perf_counter(graph_commits, acc_date, datetime.datetime.utcnow().isoformat())
 
         archive_add, archive_del, archive_net, archive_commits, archive_repos = add_archive()
-        total_commits = commit_counter(0) + archive_commits
+        total_commits = commits + archive_commits
         total_loc[0] += archive_add
         total_loc[1] += archive_del
         total_loc[2] += archive_net
