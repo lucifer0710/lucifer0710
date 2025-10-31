@@ -397,6 +397,33 @@ def formatter(query_type, difference, funct_return=False, whitespace=0):
     return funct_return
 
 
+# ✅ Corrected order of parameters
+
+
+def update_svg(file_path, updates):
+    tree = ET.parse(file_path)
+    root = tree.getroot()
+
+    # ✅ Fix: register SVG namespace to remove ns0 prefixes
+    ET.register_namespace('', "http://www.w3.org/2000/svg")
+
+    # Helper function to update tspan text by ID
+    def set_text_by_id(element_id, text):
+        elem = root.find(f".//*[@id='{element_id}']")
+        if elem is not None:
+            elem.text = str(text)
+        else:
+            print(f"⚠️ Warning: ID '{element_id}' not found in SVG")
+
+    # Apply updates from the dictionary
+    for key, value in updates.items():
+        set_text_by_id(key, value)
+
+    # ✅ Save back to same file (clean SVG, no ns0:)
+    tree.write(file_path, encoding="utf-8", xml_declaration=True)
+    print("✅ darkmode.svg successfully updated with latest GitHub stats!")
+
+
 if __name__ == "__main__":
     # ✅ Define safe defaults
     total_loc = repos = stars = followers = total_commits = 0
@@ -449,31 +476,3 @@ if __name__ == "__main__":
 
     except Exception as e:
         print(f"❌ Error during stats calculation: {e}")
-# ✅ Corrected order of parameters
-
-
-def update_svg(file_path, updates):
-    tree = ET.parse(file_path)
-    root = tree.getroot()
-
-    # ✅ Fix: register SVG namespace to remove ns0 prefixes
-    ET.register_namespace('', "http://www.w3.org/2000/svg")
-
-    # Helper function to update tspan text by ID
-    def set_text_by_id(element_id, text):
-        elem = root.find(f".//*[@id='{element_id}']")
-        if elem is not None:
-            elem.text = str(text)
-        else:
-            print(f"⚠️ Warning: ID '{element_id}' not found in SVG")
-
-    # Apply updates from the dictionary
-    for key, value in updates.items():
-        set_text_by_id(key, value)
-
-    # ✅ Save back to same file (clean SVG, no ns0:)
-    tree.write(file_path, encoding="utf-8", xml_declaration=True)
-    print("✅ darkmode.svg successfully updated with latest GitHub stats!")
-
-
-
