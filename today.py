@@ -40,8 +40,16 @@ def simple_request(func_name, query, variables):
 def graph_commits(start_date, end_date):
     query_count('graph_commits')
     total = 0
+
+    # Parse with timezone awareness
     current = datetime.datetime.fromisoformat(start_date)
     end = datetime.datetime.fromisoformat(end_date)
+
+    # If any of them is naive, make it UTC-aware
+    if current.tzinfo is None:
+        current = current.replace(tzinfo=datetime.timezone.utc)
+    if end.tzinfo is None:
+        end = end.replace(tzinfo=datetime.timezone.utc)
 
     query = '''
     query($start_date: DateTime!, $end_date: DateTime!, $login: String!) {
@@ -56,15 +64,25 @@ def graph_commits(start_date, end_date):
 
     while current < end:
         next_date = min(current + datetime.timedelta(days=365), end)
-        variables = {'start_date': current.isoformat(), 'end_date': next_date.isoformat(), 'login': USER_NAME}
+        variables = {
+            'start_date': current.isoformat(),
+            'end_date': next_date.isoformat(),
+            'login': USER_NAME
+        }
+
         request = simple_request(graph_commits.__name__, query, variables)
         data = request.json()
-        print("🧩 Raw GitHub API response:", data)  # <--- ADD THIS LINE
-        year_total = int(data['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions'])
+        print("🧩 Raw GitHub API response:", data)  # 👀 Debug print
+
+        year_total = int(
+            data['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions']
+        )
         total += year_total
         current = next_date
 
     return total
+
+
 def graph_repos_stars(count_type, owner_affiliation, cursor=None):
     query_count('graph_repos_stars')
     query = '''
