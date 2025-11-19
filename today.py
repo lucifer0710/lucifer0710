@@ -21,7 +21,7 @@ OWNER_ID = None  # Initialize as None
 
 def daily_readme(birthday):
     diff = relativedelta.relativedelta(datetime.datetime.today(), birthday)
-    return '{} {}, {} {}, {} {}{}'.format(
+    return '{} {}, {:02} {}, {:02} {}{}'.format(
         diff.years, 'year' + format_plural(diff.years),
         diff.months, 'month' + format_plural(diff.months),
         diff.days, 'day' + format_plural(diff.days),
