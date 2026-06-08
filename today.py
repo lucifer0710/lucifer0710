@@ -462,18 +462,67 @@ if __name__ == "__main__":
         print(f"Net LOC: {total_loc[2]:,}")
         print(f"Archived Repos: {archive_repos}")
 
-        # ✅ Update SVG after stats calculation
+        # Format the values and calculate the dots/spaces padding dynamically for perfect alignment
+        def format_num(val):
+            return str(val)
+
+        def get_dots(target_len, val_str):
+            just_len = target_len - len(val_str)
+            if just_len <= 0:
+                return ""
+            if just_len == 1:
+                return " "
+            if just_len == 2:
+                return ". "
+            return " " + "." * (just_len - 2) + " "
+
+        age_val = format_num(age_data)
+        age_dots = get_dots(52, age_val)
+
+        repo_val = format_num(repos)
+        contrib_val = format_num(archive_repos)
+        star_val = format_num(stars)
+        repo_dots_target = 9 - len(contrib_val)
+        repo_dots = get_dots(repo_dots_target, repo_val)
+        star_dots = get_dots(19, star_val)
+
+        commit_val = format_num(total_commits)
+        follower_val = format_num(followers)
+        commit_dots = get_dots(21, commit_val)
+        follower_dots = get_dots(16, follower_val)
+
+        loc_val = format_num(total_loc[2])
+        loc_add_val = f"+{format_num(total_loc[0])}"
+        loc_del_val = f"-{format_num(total_loc[1])}"
+        loc_dots = get_dots(18, loc_val)
+
+        # Calculate space padding between add and del
+        loc_del_dots_len = 13 - len(loc_add_val) - len(loc_del_val)
+        loc_del_dots = " " * max(0, loc_del_dots_len)
+
+        # ✅ Update SVG after stats calculation with formatted values and alignment dots
         update_svg(
             "darkmode.svg",
             {
-                "age_data": age_data,
-                "commit_data": total_commits,
-                "follower_data": followers,
-                "repo_data": repos,
-                "star_data": stars,
-                "loc_data": f"{total_loc[2]}",
-                "loc_add": f"+{total_loc[0]}",
-                "loc_del": f"-{total_loc[1]}",
+                "age_data": age_val,
+                "age_data_dots": age_dots,
+                
+                "repo_data": repo_val,
+                "repo_data_dots": repo_dots,
+                "contrib_data": contrib_val,
+                "star_data": star_val,
+                "star_data_dots": star_dots,
+
+                "commit_data": commit_val,
+                "commit_data_dots": commit_dots,
+                "follower_data": follower_val,
+                "follower_data_dots": follower_dots,
+
+                "loc_data": loc_val,
+                "loc_data_dots": loc_dots,
+                "loc_add": loc_add_val,
+                "loc_del_dots": loc_del_dots,
+                "loc_del": loc_del_val,
             },
         )
 
