@@ -494,11 +494,14 @@ if __name__ == "__main__":
         loc_val = format_num(total_loc[2])
         loc_add_val = f"+{format_num(total_loc[0])}"
         loc_del_val = f"-{format_num(total_loc[1])}"
-        loc_dots = get_dots(18, loc_val)
 
         # Calculate space padding between add and del
         loc_del_dots_len = 13 - len(loc_add_val) - len(loc_del_val)
         loc_del_dots = " " * max(0, loc_del_dots_len)
+
+        # Calculate target length for loc_dots dynamically to keep the line length perfectly aligned at 59 characters
+        loc_target_len = 31 - len(loc_add_val) - len(loc_del_dots) - len(loc_del_val)
+        loc_dots = get_dots(loc_target_len, loc_val)
 
         # ✅ Update SVG after stats calculation with formatted values and alignment dots
         update_svg(
